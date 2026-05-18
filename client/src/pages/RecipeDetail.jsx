@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import RecipeDisplay from "../components/RecipeDisplay";
 import Loader from "../components/Loader";
+import { API_BASE } from "../config/api";
 
 function RecipeDetail() {
   const { id } = useParams();
@@ -14,7 +15,7 @@ function RecipeDetail() {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const { data } = await axios.get(`/api/recipes/saved/${id}`);
+        const { data } = await axios.get(`${API_BASE}/saved/${id}`);
         setRecipe(data);
       } catch {
         setError("Recipe not found");

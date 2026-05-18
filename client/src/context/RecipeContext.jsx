@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useCallback } from "react";
 import axios from "axios";
+import { API_BASE } from "../config/api";
 
 const RecipeContext = createContext();
 
@@ -19,8 +20,6 @@ export const RecipeProvider = ({ children }) => {
   const [loading,           setLoading]           = useState(false);
   const [error,             setError]             = useState(null);
   const [dietaryPreference, setDietaryPreference] = useState("");
-
-  const API_BASE = "/api/recipes";
 
   const analyzeImage = useCallback(async (imageFile) => {
     setLoading(true);
